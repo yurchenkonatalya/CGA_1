@@ -6,7 +6,10 @@ import by.bsuir.components.Vertex;
 import by.bsuir.components.VertexTexture;
 
 public class Parser {
-    public static int index = 1;
+    public static int index_v = 1;
+    public static int index_vt = 1;
+    public static int index_vn = 1;
+
     public Component parseLine(String line){
         String[] words = line.trim().replaceAll(" +", " ").split(" ");
         int countWords = words.length;
@@ -19,8 +22,8 @@ public class Parser {
                                     Double.parseDouble(words[1]),
                                     Double.parseDouble(words[2]),
                                     Double.parseDouble(words[3]),
-                                    index);
-                            index++;
+                                    index_v);
+                            index_v++;
                             return v;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: Vertex x y z");
@@ -34,8 +37,8 @@ public class Parser {
                                     Double.parseDouble(words[2]),
                                     Double.parseDouble(words[3]),
                                     Double.parseDouble(words[4]),
-                                    index);
-                            index++;
+                                    index_v);
+                            index_v++;
                             return v;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: Vertex x y z w");
@@ -47,7 +50,9 @@ public class Parser {
                     if(countWords == 2){
                         try {
                             VertexTexture vt = new VertexTexture(
-                                    Double.parseDouble(words[1]));
+                                    Double.parseDouble(words[1]),
+                                    index_vt);
+                            index_vt++;
                             return vt;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: VertexTexture u");
@@ -58,7 +63,9 @@ public class Parser {
                         try {
                             VertexTexture vt = new VertexTexture(
                                     Double.parseDouble(words[1]),
-                                    Double.parseDouble(words[2]));
+                                    Double.parseDouble(words[2]),
+                                    index_vt);
+                            index_vt++;
                             return vt;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: VertexTexture u v");
@@ -70,7 +77,9 @@ public class Parser {
                             VertexTexture vt = new VertexTexture(
                                     Double.parseDouble(words[1]),
                                     Double.parseDouble(words[2]),
-                                    Double.parseDouble(words[3]));
+                                    Double.parseDouble(words[3]),
+                                    index_vt);
+                            index_vt++;
                             return vt;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: VertexTexture u v w");
@@ -84,7 +93,9 @@ public class Parser {
                             VectorNormal vn = new VectorNormal(
                                     Double.parseDouble(words[1]),
                                     Double.parseDouble(words[2]),
-                                    Double.parseDouble(words[3]));
+                                    Double.parseDouble(words[3]),
+                                    index_vn);
+                            index_vn++;
                             return vn;
                         }catch (NumberFormatException e){
                             System.out.println("Exc: VectorNormal i j k");
